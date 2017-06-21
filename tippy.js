@@ -60,6 +60,8 @@ var Tooltip = function(settings) {
         event.appendChild(spanElm);
         event._spanRef = spanElm;
     },
+    
+    //remove toolTip function
     self.hideTip = function (event) {  
         event.title = event._spanRef.innerHTML;
         event.removeChild(event._spanRef);

@@ -1,0 +1,7 @@
+.tooltip {
+    padding: 10px;
+    position: absolute;
+    z-index: 100;
+    top: 50px;
+    left: 50px;
+}
