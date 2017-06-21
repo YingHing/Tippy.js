@@ -1,9 +1,9 @@
 var settings = {
-    bgColor: 'black',
+    bgColor: 'red',
+    borderRadius: 10,
+    width: 150,
     fontColor: 'white',
     fontWeight: 'normal',
-    borderRadius: '0px',
-    width: '100px'
 };
 
 var Tooltip = new Tooltip(settings);

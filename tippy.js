@@ -1,54 +1,62 @@
-//window.onload = function () {
-//    Tooltip();
-//}
-
 var Tooltip = function(settings) {
     var self = this;
     
+    //Default style of tooltip
     self.defaultSettings = {
         bgColor: 'black',
         fontColor: 'white',
         fontWeight: 'normal',
-        borderRadius: '0px',
+        borderRadius: 0,
         width: '100px'
     }
     
+    //Link with tippy-custom
     self.customSettings = settings;
     
-    //collect all links
+    //Make new class tippy
     self.els = document.getElementsByClassName('tippy');
     
-    // Add click event listener for ca classe
+    // Add click event listener for tooltip
     for (i = 0; i < self.els.length; i++) {
     
-        // Create an event for alert function
-        self.els[i].addEventListener("mouseover", function () {
+        // Create an event for showTip
+        self.els[i].addEventListener("mouseover", function() {
             self.showTip(this);
         });
+        // Create an event for hideTip
+        self.els[i].addEventListener("mouseout", function() {
+            self.hideTip(this);
+        })
     }
 
+    //Create toolTip
     self.showTip = function (event) {
-        console.log(event);
-        //create and add a span element to act as tooltip
-        var spanElm = document.createElement("span");
-//        spanElm.className = "tooltip";
-        spanElm.innerHTML = event.title;
         
-        //styling basic tooltip
-        spanElm.style.background = ("#9F9FAD");
-        spanElm.style.color = ("white");
-        spanElm.style.fontWeight = ("bold");
-        spanElm.style.padding = ("10px");
-        spanElm.style.mozBorderRadius = ("1 =px");
-        spanElm.style.borderRadius = ("10px");
-        spanElm.style.position = ("absolute");
-        spanElm.style.zIndex = ("1");
-        spanElm.style.top = ("50px");
-        spanElm.style.left = ("20px");
-        spanElm.style.width = ("120px");
-
-        //set target element's title to nothing
-        event.title = "";
+        //Give toolTip default style
+        var tippySetting = self.defaultSettings;
+        
+        // Loop for checking the settings
+        for (var attrname in tippySetting) {
+           if (self.customSettings.hasOwnProperty(attrname)) {
+                tippySetting[attrname] = self.customSettings[attrname];
+            }
+        }
+        
+        //Create and add a span element to act as tooltip
+        var spanElm = document.createElement("span");
+        
+        //Link tooltip to class
+        spanElm.className = "tooltip";
+        
+        //styling tooltip
+        spanElm.style.background = tippySetting['bgColor'];
+        spanElm.style.color = tippySetting['fontColor'];
+        spanElm.style.fontWeight = tippySetting['fontWeight'];
+        spanElm.style.borderRadius = tippySetting['borderRadius'] + "px";
+        spanElm.style.mozBorderRadius = tippySetting['borderRadius'] + "px";
+        spanElm.style.width = tippySetting['width'] + "px";
+        spanElm.innerHTML = event.getAttribute("ty-title");
+        
         event.appendChild(spanElm);
         event._spanRef = spanElm;
     },
@@ -56,5 +64,4 @@ var Tooltip = function(settings) {
         event.title = event._spanRef.innerHTML;
         event.removeChild(event._spanRef);
     }
-
 };
