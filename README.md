@@ -14,13 +14,13 @@ This project was initially made for school, the assignment consisted of making a
 
 Add the CSS file to your HTML header.
 ```html
-<link href="css/tippy.css" rel="stylesheet">
+<link href="tippy.css" rel="stylesheet">
 ```
 
 Add the JavaScript files at the BOTTOM of your HTML file. If the JavaScript file is not placed at the bottom then the tool tip won’t work.
 ```htm
-<script src="js/tippy.js"></script>
-<script src="js/tippy-custom.js"></script>
+<script src="tippy.js"></script>
+<script src="tippy-custom.js"></script>
 ```
 
 ## Usage
