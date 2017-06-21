@@ -1,32 +1,33 @@
-var Tooltip = {
-    init: function () {
+window.onload = function() { Tooltip(); } 
+
+function Tooltip() {
+    var self = {};
         //collect all links
-        var theLinks = document.getElementsByTagName("a");
+        self.els = document.getElementsByTagName("a");
         
-        if (theLinks) {
-            for (i = 0; i < theLinks.length; i++) {
-                if (theLinks[i].title.length) {
-                    theLinks[i].addEventListener("mouseover", Tooltip, showTip);
-                    theLinks[i].addEventListener("mouseout", Tooltip, showTip);
-                }
-            }
-        }
-    },
-    showTip: function(event) {
+             for (var i = 0; i < self.els.length; i++) {
+                self.els[i].addEventListener("mouseover", function () {
+                   self.showTip(this);
+                }, false);
+                 
+                 self.els[i].addEventListener("mouseout", function () {
+                    self.hideTip(this);
+                }, false); 
+             }
+                
+    self.showTip = function(event) {
         //create and add a span element to act as tooltip
         var spanElm = document.createElement("span");
         spanElm.className = "tooltip";
-        spanElm.innerHTML = event.target.title;
+        spanElm.innerHTML = event.title;
         
         //set target element's title to nothing
-        event.target.title = "";
-        event.target.appendChild(spanElm);
-        event.target._spanRef = spanElm; 
+        event.title = "";
+        event.appendChild(spanElm);
+        event._spanRef = spanElm;
     },
-    hideTip: function(event) {
-        event.target.title = event.target._spanRef.innerHTML;
-        event.target.removeChild(event.target._spanRef);
+    self.hideTip = function(event) {
+        event.title = event._spanRef.innerHTML;
+        event.removeChild(event._spanRef);
     }
 };
-
-window.addEventListener("load",Tooltip.init);
