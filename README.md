@@ -8,8 +8,6 @@ Hello and welcome to my tooltip framework. tippy.js is a customizable tooltip th
 
 ## Motivation
 
-A short description of the motivation behind the creation and maintenance of the project. This should explain **why** the project exists.
-
 This project was initially made for school, the assignment consisted of making a framework or library from scratch with JavaScript and implementing it in your own website. The reason why I chose a tool tip is because i couldn’t find a good example of a tool tip made in JavaScript, all I could find were examples made in CSS. I wanted to challenge myself by making one.
 
 ## Installation
