@@ -3,7 +3,7 @@ window.onload = function() { Tooltip(); }
 function Tooltip() {
     var self = {};
         //collect all links
-        self.els = document.getElementsByTagName("a");
+        self.els = document.getElementsByClassName("tippy");
         
              for (var i = 0; i < self.els.length; i++) {
                 self.els[i].addEventListener("mouseover", function () {
@@ -30,4 +30,5 @@ function Tooltip() {
         event.title = event._spanRef.innerHTML;
         event.removeChild(event._spanRef);
     }
+    
 };
