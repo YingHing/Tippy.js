@@ -52,3 +52,9 @@ In tippy-custom.js you can change the style of the tool tip to whatever you want
     fontColor: '#fff',
     fontWeight: 'bold',
 ```
+
+## Contributors
+This project is created by Yinghing Lam
+
+## License
+Licensed under the MIT license.
